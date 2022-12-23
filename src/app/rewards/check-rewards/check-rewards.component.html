@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <button mat-raised-button color="" [routerLink]="['']">
+        <mat-icon>arrow_back</mat-icon>
+        Back</button>
+    <button mat-raised-button color="primary" class="float-end" (click)="openOrderDialog()">
+        <mat-icon>add</mat-icon>
+        Place Order </button>
+    <div class="col-sm-12 mt-2">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="custom-thead">
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Order Date</th>
+                        <th>Amount</th>
+                        <th>Rewards Earned</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orders">
+                        <td>{{item.orderId}}</td>
+                        <td>{{item.date | date:'fullDate'}}</td>
+                        <td>{{item.amount | currency: 'USD'}}</td>
+                        <!-- All the reward points are calculating from a custom pipe -->
+                        <td><b>{{item.amount | calculateRewards}} points</b></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
